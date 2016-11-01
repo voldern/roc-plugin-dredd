@@ -21,6 +21,7 @@
     "url": "git@github.com:voldern/roc-plugin-dredd.git"
   },
   "dependencies": {
+    "dredd": "^2.2.3",
     "roc": "^1.0.0-rc.11"
   },
   "devDependencies": {
