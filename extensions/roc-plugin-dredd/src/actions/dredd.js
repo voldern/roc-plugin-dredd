@@ -1,7 +1,9 @@
 import { initLog } from 'roc';
 import Dredd from 'dredd';
 
-const log = initLog();
+const { name, version } = require('../../package.json');
+
+const log = initLog(name, version);
 
 export default ({ context: { config: { settings } } }) => () => {
     const port = process.env.PORT || settings.runtime.port;
