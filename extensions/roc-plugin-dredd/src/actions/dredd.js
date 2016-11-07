@@ -5,8 +5,8 @@ const { name, version } = require('../../package.json');
 
 const log = initLog(name, version);
 
-export default ({ context: { config: { settings } } }) => () => {
-    const port = process.env.PORT || settings.runtime.port;
+export default ({ context: { config: { settings } } }) => (port, path) => () => {
+    log.small.info('Testing API using dredd.\n');
 
     // Make it possible to override reporter using _raw
     const options = {
@@ -19,9 +19,7 @@ export default ({ context: { config: { settings } } }) => () => {
         options,
     });
 
-    log.small.info('Testing API using dredd.\n');
-
-    return () => dredd.run((err, stats) => {
+    dredd.run((err, stats) => {
         if (err) {
             throw err;
         }

@@ -1,4 +1,4 @@
-import { required, isArray, isString, isBoolean } from 'roc/validators';
+import { required, isArray, isString } from 'roc/validators';
 
 export default {
     settings: {
