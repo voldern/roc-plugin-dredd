@@ -8,9 +8,15 @@ const log = initLog(name, version);
 export default ({ context: { config: { settings } } }) => () => {
     const port = process.env.PORT || settings.runtime.port;
 
+    // Make it possible to override reporter using _raw
+    const options = {
+        reporter: settings.test.dredd.reporter || ['dot'],
+        ...settings.test.dredd,
+    };
+
     const dredd = new Dredd({
-        server: `http://localhost:${port}`,
-        options: settings.test.dredd,
+        server: `http://localhost:${port}${path}`,
+        options,
     });
 
     log.small.info('Testing API using dredd.\n');

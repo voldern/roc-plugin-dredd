@@ -2,14 +2,9 @@ export default {
     settings: {
         test: {
             dredd: {
+                _raw: {},
                 path: ['api.md'],
                 level: 'info',
-                silent: false,
-                header: [],
-                user: null,
-                reporter: ['dot'],
-                output: [],
-                color: true,
             },
         },
     },
