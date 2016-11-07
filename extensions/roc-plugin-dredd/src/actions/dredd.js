@@ -22,12 +22,10 @@ export default ({ context: { config: { settings } } }) => () => {
 
         if (stats.errors) {
             log.large.error('One or more errors occured while running dredd');
-            return;
         }
 
         if (stats.failures) {
             log.large.error('One or more dredd tests failed');
-            return;
         }
 
         log.small.success('Dredd tests passed');
