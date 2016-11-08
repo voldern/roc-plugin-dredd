@@ -49,11 +49,12 @@ function watchTest(dredd) {
     }
 }
 
-export default ({ context: { config: { settings } } }) => (port, path) => () => {
+export default ({ context: { verbose, config: { settings } } }) => (port, path) => () => {
     // Make it possible to override reporter using _raw
     const options = {
-        reporter: settings.test.dredd.reporter || ['dot'],
         ...settings.test.dredd,
+        reporter: settings.test.dredd.reporter || ['dot'],
+        level: verbose ? 'debug' : settings.test.dredd.level,
     };
 
     const dredd = new Dredd({
