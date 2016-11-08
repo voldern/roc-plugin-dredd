@@ -4,7 +4,7 @@ export default {
             dredd: {
                 _raw: {},
                 path: ['api.md'],
-                level: 'info',
+                level: 'actual',
             },
         },
     },
