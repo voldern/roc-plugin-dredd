@@ -20,14 +20,18 @@ function runTest(dredd) {
         }
 
         if (stats.errors) {
-            log.large.error('One or more errors occured while running dredd');
+            log.large.error(`${stats.errors} errors occured`);
         }
 
         if (stats.failures) {
-            log.large.warn('One or more dredd tests failed');
+            log.large.warn(`${stats.failures} tests failed`);
         }
 
-        log.small.success('Dredd tests passed');
+        if (stats.skipped) {
+            log.large.warn(`Skipped ${stats.skipped} tests`);
+        }
+
+        log.small.success(`Tests passed in ${stats.duration}ms`);
 
         if (queuedTest) {
             runTest(dredd, true);
