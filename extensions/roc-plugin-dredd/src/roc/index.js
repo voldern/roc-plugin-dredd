@@ -8,13 +8,6 @@ const lazyRequire = lazyFunctionRequire(require);
 export default {
     config,
     meta,
-    actions: [
-        {
-            hook: 'server-started',
-            description: 'Run dredd tests',
-            action: lazyRequire('../actions/dredd'),
-        },
-    ],
     commands: {
         development: {
             dredd: {
