@@ -8,7 +8,7 @@ const log = initLog(name, version);
 let runningTest = false;
 let queuedTest = false;
 
-function runTest(dredd) {
+function runTest(dredd, watch = false) {
     log.small.info('Running dredd.\n');
 
     queuedTest = false;
@@ -25,6 +25,10 @@ function runTest(dredd) {
 
         if (stats.failures) {
             log.large.warn(`${stats.failures} tests failed`);
+
+            if (!watch) {
+                process.exit(1);
+            }
         }
 
         if (stats.skipped) {
@@ -32,6 +36,10 @@ function runTest(dredd) {
         }
 
         log.small.success(`Tests passed in ${stats.duration}ms`);
+
+        if (!watch) {
+            process.exit(0);
+        }
 
         if (queuedTest) {
             runTest(dredd, true);
@@ -45,11 +53,13 @@ function watchTest(dredd) {
     if (runningTest) {
         queuedTest = true;
     } else {
-        runTest(dredd);
+        runTest(dredd, true);
     }
 }
 
-export default ({ context: { verbose, config: { settings } } }) => (port, path) => () => {
+export default ({ context }, watch) => (port, path) => () => {
+    const { verbose, config: { settings } } = context;
+
     // Make it possible to override reporter using _raw
     const options = {
         ...settings.test.dredd,
@@ -62,5 +72,9 @@ export default ({ context: { verbose, config: { settings } } }) => (port, path) 
         options,
     });
 
-    watchTest(dredd);
+    if (watch) {
+        watchTest(dredd);
+    } else {
+        runTest(dredd);
+    }
 };

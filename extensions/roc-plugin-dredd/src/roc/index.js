@@ -1,4 +1,5 @@
 import { lazyFunctionRequire } from 'roc';
+import { isBoolean } from 'roc/validators';
 
 import config from '../config/roc.config.js';
 import meta from '../config/roc.config.meta.js';
@@ -13,6 +14,14 @@ export default {
             dredd: {
                 command: lazyRequire('../commands/dredd'),
                 description: 'Runs dredd in current project',
+                options: {
+                    watch: {
+                        alias: 'w',
+                        description: 'If the tests should run in watch mode.',
+                        default: false,
+                        validator: isBoolean,
+                    },
+                },
             },
         },
     },
