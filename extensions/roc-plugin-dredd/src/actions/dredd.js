@@ -5,19 +5,14 @@ const { name, version } = require('../../package.json');
 
 const log = initLog(name, version);
 
-export default ({ context: { config: { settings } } }) => (port, path) => () => {
-    log.small.info('Testing API using dredd.\n');
+let runningTest = false;
+let queuedTest = false;
 
-    // Make it possible to override reporter using _raw
-    const options = {
-        reporter: settings.test.dredd.reporter || ['dot'],
-        ...settings.test.dredd,
-    };
+function runTest(dredd) {
+    log.small.info('Running dredd.\n');
 
-    const dredd = new Dredd({
-        server: `http://localhost:${port}${path}`,
-        options,
-    });
+    queuedTest = false;
+    runningTest = true;
 
     dredd.run((err, stats) => {
         if (err) {
@@ -29,9 +24,38 @@ export default ({ context: { config: { settings } } }) => (port, path) => () => 
         }
 
         if (stats.failures) {
-            log.large.error('One or more dredd tests failed');
+            log.large.warn('One or more dredd tests failed');
         }
 
         log.small.success('Dredd tests passed');
+
+        if (queuedTest) {
+            runTest(dredd, true);
+        } else {
+            runningTest = false;
+        }
     });
+}
+
+function watchTest(dredd) {
+    if (runningTest) {
+        queuedTest = true;
+    } else {
+        runTest(dredd);
+    }
+}
+
+export default ({ context: { config: { settings } } }) => (port, path) => () => {
+    // Make it possible to override reporter using _raw
+    const options = {
+        reporter: settings.test.dredd.reporter || ['dot'],
+        ...settings.test.dredd,
+    };
+
+    const dredd = new Dredd({
+        server: `http://localhost:${port}${path}`,
+        options,
+    });
+
+    watchTest(dredd);
 };
