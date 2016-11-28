@@ -28,7 +28,7 @@ export default class Dredd extends UpstreamDredd {
             }
 
             if (!watch) {
-                process.exit(1);
+                process.exit(0);
             }
         });
     }
