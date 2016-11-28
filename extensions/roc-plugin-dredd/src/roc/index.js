@@ -14,6 +14,7 @@ export default {
             dredd: {
                 command: lazyRequire('../commands/dredd'),
                 description: 'Runs dredd in current project',
+                settings: ['test'],
                 options: {
                     watch: {
                         alias: 'w',

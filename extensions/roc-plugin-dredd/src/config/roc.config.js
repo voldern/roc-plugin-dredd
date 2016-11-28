@@ -2,9 +2,8 @@ export default {
     settings: {
         test: {
             dredd: {
-                _raw: {},
+                __raw: {},
                 path: ['api.md'],
-                level: 'actual',
             },
         },
     },

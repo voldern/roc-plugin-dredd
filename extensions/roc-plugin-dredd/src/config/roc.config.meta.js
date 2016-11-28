@@ -8,10 +8,6 @@ export default {
                     description: 'Filepaths to API descriptions, can use glob wildcards',
                     validator: required(isArray(isString)),
                 },
-                level: {
-                    description: 'Log level (info, silly, debug, verbose, ...)',
-                    validator: required(isString),
-                },
             },
         },
     },
