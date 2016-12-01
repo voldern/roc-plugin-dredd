@@ -5,6 +5,7 @@
   * [update-settings](#update-settings)
 * [roc-plugin-dredd](#roc-plugin-dredd)
   * [run-dev-command](#run-dev-command)
+  * [run-dredd-command](#run-dredd-command)
 
 ## roc
 
@@ -31,3 +32,16 @@ Used to start dev server used for dredd testing
 
 __Initial value:__ _Nothing_  
 __Expected return value:__ _Nothing_
+
+### run-dredd-command
+
+Used to run the dredd command
+
+__Initial value:__ _Nothing_  
+__Expected return value:__ _Nothing_
+
+#### Arguments
+
+| Name  | Description             | Type      | Required | Can be empty |
+| ----- | ----------------------- | --------- | -------- | ------------ |
+| watch | Run dredd in watch mode | `Boolean` | Yes      | No           |
