@@ -14,7 +14,6 @@ export default ({ context }, watch) => (port, path) => () => {
     const options = {
         ...settings.test.dredd,
         silent: true, // We need to set this to silent to disable the default CLI reporter
-        reporter: settings.test.dredd.reporter || [],
         verbose, // We introduce this option to enable verbosity
     };
 
