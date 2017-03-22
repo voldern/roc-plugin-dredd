@@ -8,7 +8,8 @@
     "build": "rid build",
     "lint": "rid lint",
     "link": "rid link",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "release": "rid release --use-alias"
   },
   "devDependencies": {
     "@rocjs/roc-internal-dev": "^2.0.2"
