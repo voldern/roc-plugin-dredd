@@ -22,13 +22,5 @@ export default ({ context }, watch) => (port, path) => () => {
         options,
     }, log);
 
-    registerAction(({ hook }) => {
-        if (hook !== 'dev-process-stopping') {
-            return;
-        }
-
-        dredd.cancel();
-    }, 'roc-plugin-dredd');
-
     dredd.run(watch);
 };
