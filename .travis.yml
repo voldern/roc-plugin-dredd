@@ -14,6 +14,7 @@ script:
   - cd example/koa-service
   - npm link roc-plugin-dredd
   - npm install
+  - npm run build
   - npm run dredd
 
 after_success:
