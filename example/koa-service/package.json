@@ -5,7 +5,7 @@
   "author": "axelhildingson",
   "license": "MIT",
   "scripts": {
-    "build": "roc build",
+    "build": "roc build --build-disableProgressbar true",
     "dev": "roc dev",
     "start": "roc start",
     "dredd": "roc dredd"
