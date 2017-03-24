@@ -1,0 +1,27 @@
+{
+  "name": "koa-service",
+  "version": "1.0.0",
+  "description": "A Roc project",
+  "author": "axelhildingson",
+  "license": "MIT",
+  "scripts": {
+    "build": "roc build",
+    "dev": "roc dev",
+    "start": "roc start",
+    "dredd": "roc dredd"
+  },
+  "dependencies": {
+    "roc-package-web-app-react": "^1.0.0-beta.1",
+    "koa-router": "5.4.0"
+  },
+  "devDependencies": {
+      "babel-eslint": "6.0.2",
+      "chai": "^3.5.0",
+      "eslint": "2.6.0",
+      "eslint-config-airbnb": "6.2.0",
+      "eslint-plugin-react": "4.2.3",
+      "roc-package-web-app-react-dev": "^1.0.0-beta.1",
+      "roc-plugin-style-sass": "^1.0.0-beta.4",
+      "roc-plugin-dredd": "2.0.0"
+  }
+}
