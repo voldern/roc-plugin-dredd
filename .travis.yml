@@ -16,6 +16,7 @@ script:
   - npm install
   - npm run build
   - npm run dredd
+  - cat report.xml
 
 after_success:
   - npm start docs
