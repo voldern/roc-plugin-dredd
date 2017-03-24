@@ -11,7 +11,7 @@ install:
 script:
   - npm run build
   - npm run link
-  - cd examples/koa-service
+  - cd example/koa-service
   - npm link roc-plugin-dredd
   - npm install
   - npm run dredd
