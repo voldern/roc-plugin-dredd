@@ -22,6 +22,9 @@ module.exports = {
     test: {
         dredd: {
             path: ['blueprint.apib'],
+            reporter: ['junit'],
+            output: ['report.xml'],
+
         },
     },
     dev: {
