@@ -3,10 +3,20 @@ cache:
   directories:
     - node_modules
 node_js:
-  - 4.2
-before_install:
+  - 6.7
+
+install:
+  - nvm install $NODE_VERSION
   - npm install -g npm
-before_script:
+  - npm install
+
+script:
+  - npm run build
   - npm run link
+  - cd examples/koa-service
+  - npm link roc-plugin-dredd
+  - npm install
+  - npm run dredd
+
 after_success:
-  - npm start build && npm start docs
+  - npm start docs
