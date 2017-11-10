@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
-    "dredd": "^3.2.2",
+    "dredd": "^4.6.2",
     "roc": "^1.0.0-rc.11"
   },
   "devDependencies": {
